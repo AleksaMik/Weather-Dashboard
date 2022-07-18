@@ -20,7 +20,7 @@ Repository has a unique name. Repository follows best practices for file structu
 Simple Weather Dashboard was created. Weather forecast is desplayed for current and the next five days. Third party Api was utilized in order to get updated forecast in real time. Searched locations saved localy and displayed in the form. 
 </p>
 
-[link to the web](https://aleksamik.github.io/Simple-Calendar/)
+[link to the web](https://aleksamik.github.io/Weather-Dashboard/)
 
 [link to github repo](https://github.com/AleksaMik/Weather-Dashboard)
 
