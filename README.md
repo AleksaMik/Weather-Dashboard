@@ -22,5 +22,5 @@ Simple Weather Dashboard was created. Weather forecast is desplayed for current 
 
 [link to the web](https://aleksamik.github.io/Simple-Calendar/)
 
-[link to github repo](https://github.com/AleksaMik/Simple-Calendar)
+[link to github repo](https://github.com/AleksaMik/Weather-Dashboard)
 
