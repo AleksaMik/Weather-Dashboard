@@ -145,9 +145,7 @@ function display5Day(r) {
         $(card5dFrcstRH).attr("id", "card5dFrcstRH" + "-" + i);
 
         var RH = forecastConditions.daily[i].humidity;
-
         $(card5dFrcstRH).text("RH: " + RH + "%");
-
         $("#card5dFrcstBdy" + "-" + i).append(card5dFrcstRH);
 
     }
@@ -165,15 +163,10 @@ function recentCities () {
             let button = $("<button>");
 
             $(button).addClass('list-group-item list-group-item-action');
-
             $(button).attr("id", localStorage.key(i));
-
             $(button).attr("type", "button");
-
             $(button).text(localStorage.key(i));
-
             $("#recent-cities-btns").append(button);
-
             $("#recent-cities").removeClass("hide");
         }
 
@@ -181,21 +174,16 @@ function recentCities () {
 
 };
 function isJSONcity(i) {
-
     try {
         JSON.parse(localStorage.getItem(localStorage.key(i))).name == localStorage.key(i);
         return true;
     } catch (error) {
         return false;
-
     }
 
 }
 
-
 function displayCurrnet(city) {
-
-    
     for ( i=0 ; i < localStorage.length ; i++ ) {
         if (city == localStorage.key(i)) {
 
@@ -212,12 +200,11 @@ function displayCurrnet(city) {
             $("#current-wind").text("Wind Speed: " + currentConditions.current.wind_speed + " mph");
             
             var uvi = currentConditions.current.uvi;
-
             $("#current-uvi").text("UV Index: " + uvi);
             $("#current-uvi").removeClass("badge-success badge-warning badge-danger");
 
             if(uvi < 3){
-                $("#current-uvi").addClass("badge-success",text("low"));
+                $("#current-uvi").addClass("badge-success");
             }else if(uvi >= 3 && uvi < 8){
                 $("#current-uvi").addClass("badge-warning");
             }else{
