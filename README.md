@@ -17,7 +17,7 @@ Repository has a unique name. Repository follows best practices for file structu
 
 ## Process
 <p>
-Simple daily plnner web-page has been created. User can create event for each working hour (9-6pm) and save it localy. Past hours will have grey color background, present hours will be indicated with red and future one with green color.
+Simple Weather Dashboard was created. Weather forecast is desplayed for current and the next five days. Third party Api was utilized in order to get updated forecast in real time. Searched locations saved localy and displayed in the form. 
 </p>
 
 link to the web
