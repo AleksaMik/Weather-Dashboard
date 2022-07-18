@@ -1,9 +1,12 @@
+function render() {
+    localStorage.removeItem("cities");
+
 let chosenCity = "";
 let searchedCity = JSON.parse (localStorage.getItem("cities")) || [];
 const date = moment().format('MMMM Do YYYY, h:mm:ss a');
 
 function getApi() {
-    const requestURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityPicked + "&units=imperial&appid=1690177fc6acff4c67ec2d90d2b1d0c6";
+    const requestURL = "https://api.openweathermap.org/data/2.5/weather?q=" + chosenCity + "&units=imperial&appid=1690177fc6acff4c67ec2d90d2b1d0c6";
 
 fetch (requestURL)
 .then(function (data) {
@@ -34,8 +37,8 @@ function uvIndex(){
 const uvInUrl = "https://api.openweathermap.org/data/2.5/uvi?lat=" + latitude + "&lon=" + longtitude + "&appid=45b6598a4a1bd706ba39bf0f2ac2fcf4";
 
 fetch (uvInUrl)
-.then(functon (data) {
-  return data.json();
+.then(function(datas) {
+  return datas.json();
 }).then(function (uvInUrl) {
 console.log(uvInUrl.value);
 
@@ -59,7 +62,7 @@ if (uvInUrl.value <=3){
 }
 
 function fiveDaysApi() {
-    const url5Days = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityPicked + "&units=imperial&appid=45b6598a4a1bd706ba39bf0f2ac2fcf4";
+    const url5Days = "https://api.openweathermap.org/data/2.5/forecast?q=" + chosenCity + "&units=imperial&appid=45b6598a4a1bd706ba39bf0f2ac2fcf4";
 fetch (url5Days)
 .then(function(data) {
 return data.json();
@@ -81,3 +84,42 @@ return data.json();
     }
 })
 }
+function searchedLocation() {
+    $("#location-search").empty();
+    for (let i=o; i<searchedCity.lenght; i++){
+        let el = ("<p class= 'cities'>");
+        el.attr("data", searchedCity [i]);
+        el.text(searchedCity[i]);
+        $("location-search").append(el);
+    }
+}
+
+$("#submitBtn").on("clic", function (event){
+    event.preventDefault();
+    chosenCity = $("#cityName").val().trim();
+    if (!locationSearched.includes(chosenCity)){
+        (locationSearched).push(chosenCity);
+    }
+    if (locationSearched.lenght > 5) {
+locationSearched.shift();
+    }
+
+    searchedLocation();
+    getApi();
+    fiveDaysApi();
+    localStorage.setItem("cities",JSON.stringify(locationSearched));
+    $("#cityName").val("");
+    $("#one-day").css('display','block');
+});
+
+searchedLocation();
+
+$(document).on('click','.cities', function() {
+    chosenCity = $(this).text();
+    $(chosenCity).on("click",getApi)
+    getApi();
+    fiveDaysApi();
+});
+}
+$(document).ready(render);
+
